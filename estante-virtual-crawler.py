@@ -39,6 +39,8 @@ for book in books:
     #retirar preços repetidos
     matches = list(set(matches))
 
+    matches = sorted([float(i.replace(",", ".")) for i in matches])
+
     new_prices = []
     for match in matches:
         if match not in book.matches:
@@ -67,5 +69,5 @@ json.dump(book_names, open(filename_notification_books, 'w', encoding = 'utf-8')
 if len(notification_books) > 0:
     gmail.notification(notification_books)
 
-    toaster = ToastNotifier()
-    toaster.show_toast("Novos Preços: Estante Virtual", str(book_names))
+    # toaster = ToastNotifier()
+    # toaster.show_toast("Novos Preços: Estante Virtual", str(book_names))

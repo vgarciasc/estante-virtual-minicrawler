@@ -3,15 +3,73 @@
     "name": "O Poder do Hábito",
     "search_str": "o+poder+do+habito",
     "matches": [
-      "busca-price-fromto\">por:</span>&nbsp;R$&nbsp;56,90</strong",
-      "busca-price-fromto\">por:</span>&nbsp;R$&nbsp;59,90</strong",
-      "busca-price-fromto\">at&eacute;:</span>&nbsp;R$&nbsp;115,02</strong",
-      "busca-price-fromto\">de:</span>&nbsp;R$&nbsp;47,00 <span class=\"busca-price-fromto\">at&eacute;:</span>&nbsp;R$&nbsp;115,02</strong",
-      "busca-price-fromto\">de:</span>&nbsp;R$&nbsp;47,00</strong",
-      "busca-price-fromto\">por:</span>&nbsp;R$&nbsp;49,90</strong",
-      "busca-price-fromto\">por:</span>&nbsp;R$&nbsp;38,17</strong"
+      38.17,
+      47.0,
+      48.2,
+      49.9,
+      56.9,
+      59.9,
+      115.02
     ],
     "new_prices": [],
-    "last_modified": "2018-09-09 12:07:29.623833"
+    "last_modified": "2018-09-09 13:49:38.053388"
+  },
+  {
+    "name": "Art of Game Design",
+    "search_str": "art+of+game+design",
+    "matches": [
+      39.0,
+      69.0
+    ],
+    "new_prices": [],
+    "last_modified": "2018-09-09 13:49:38.893725"
+  },
+  {
+    "name": "Infinite Jest",
+    "search_str": "infinite+jest",
+    "matches": [
+      55.0,
+      69.0
+    ],
+    "new_prices": [],
+    "last_modified": "2018-09-09 13:49:39.757517"
+  },
+  {
+    "name": "A Pattern Language",
+    "search_str": "pattern+language",
+    "matches": [
+      10.0,
+      137.6,
+      146.2,
+      170.0
+    ],
+    "new_prices": [],
+    "last_modified": "2018-09-09 13:49:40.873316"
+  },
+  {
+    "name": "The Timeless Way of Building",
+    "search_str": "timeless+way+of+building",
+    "matches": [
+      130.0,
+      210.0
+    ],
+    "new_prices": [],
+    "last_modified": "2018-09-09 13:49:42.113568"
+  },
+  {
+    "name": "Why Don't Students Like School?",
+    "search_str": "school+daniel+willingham",
+    "matches": [
+      194.97
+    ],
+    "new_prices": [],
+    "last_modified": "2018-09-09 13:49:43.013348"
+  },
+  {
+    "name": "Systems Thinking: A Primer",
+    "search_str": "primer+thinking",
+    "matches": [],
+    "new_prices": [],
+    "last_modified": ""
   }
 ]

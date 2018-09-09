@@ -46,12 +46,10 @@ def notification(book_list):
     string = "Os seguintes livros receberam novos preços:<br>"
     for book in book_list:
         string += "<b><a href=\"" + 'https://www.estantevirtual.com.br/busca?q=' + book.search_str + "\">" + book.name + "</a></b>"
-        string += "<br>"
         string += "<ul>"
         for price in book.new_prices:
-            string += "<li>" + price + "</li>"
+            string += "<li>" + str(price) + "</li>"
         string += "</ul>"
-        string += "<br>"
         string += "<br>"
 
     subject = '\U0001F4D8 Estante Virtual Crawler - [' + str(datetime.datetime.now()) + ']'
