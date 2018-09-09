@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import pdb
 import requests
 import re
 import hashlib
 import datetime
 import json
 from win10toast import ToastNotifier
+import gmail
 
 filename_data = 'estante_virtual_data.json'
 filename_notification_books = 'estante_virtual_novos.json'
@@ -19,18 +21,19 @@ class Book:
         self.new_prices = new_prices
         self.last_modified = last_modified
 
-books = json.load(open(filename_data, 'r'))
+books = json.load(open(filename_data, 'r', encoding='utf-8'))
 books_serializable = []
 notification_books = []
 
 for book in books:
     book = Book(book['name'], book['search_str'], book['matches'], book['new_prices'], book['last_modified'])
 
-    search_url = 'https://www.estantevirtual.com.br/busca?q=' + book.name
+    search_url = 'https://www.estantevirtual.com.br/busca?q=' + book.search_str
 
     r = requests.get(search_url)
 
-    regex = re.compile("busca-price-fromto.*?strong")
+    regex = re.compile("\d+\,+\d+")
+    # regex = re.compile("busca-price-fromto.*?strong")
     matches = regex.findall(str(r.content))
 
     #retirar preços repetidos
@@ -48,16 +51,21 @@ for book in books:
         #alteracao nos preços
         book.matches = matches
         book.last_modified = str(datetime.datetime.now())
-        notification_books.append(book.name)
+        notification_books.append(book)
 
     book.new_prices = new_prices
 
     books_serializable.append(book.__dict__)
 
+book_names = []
+for book in notification_books:
+    book_names.append(book.name)
+
 json.dump(books_serializable, open(filename_data, 'w', encoding = 'utf-8'), indent = 2, ensure_ascii=False)
+json.dump(book_names, open(filename_notification_books, 'w', encoding = 'utf-8'), indent = 2, ensure_ascii=False)
 
 if len(notification_books) > 0:
-    toaster = ToastNotifier()
-    toaster.show_toast("Novos Preços: Estante Virtual", str(notification_books))
+    gmail.notification(notification_books)
 
-json.dump(notification_books, open(filename_notification_books, 'w', encoding = 'utf-8'), indent = 2, ensure_ascii=False)
+    toaster = ToastNotifier()
+    toaster.show_toast("Novos Preços: Estante Virtual", str(book_names))
