@@ -7,7 +7,6 @@ import re
 import hashlib
 import datetime
 import json
-from win10toast import ToastNotifier
 import gmail
 
 filename_data = 'estante_virtual_data.json'
@@ -32,10 +31,12 @@ for book in books:
 
     r = requests.get(search_url)
 
-    regex = re.compile("\d+\,+\d+")
-    # regex = re.compile("busca-price-fromto.*?strong")
-    matches = regex.findall(str(r.content))
-
+    if "Nenhum resultado" in str(r.content):
+        matches = []
+    else:
+        regex = re.compile("[R][$] \d+,\d")
+        matches = [match[3:] for match in regex.findall(str(r.content))]
+    
     #retirar preços repetidos
     matches = list(set(matches))
 
@@ -68,6 +69,3 @@ json.dump(book_names, open(filename_notification_books, 'w', encoding = 'utf-8')
 
 if len(notification_books) > 0:
     gmail.notification(notification_books)
-
-    # toaster = ToastNotifier()
-    # toaster.show_toast("Novos Preços: Estante Virtual", str(book_names))
